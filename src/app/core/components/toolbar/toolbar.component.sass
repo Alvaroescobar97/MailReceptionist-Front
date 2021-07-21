@@ -1,0 +1,21 @@
+@import "../../../../assets/sass/modules/_mixins.sass"
+
+button
+  display: none
+
+.navbar
+  justify-content: space-between
+  @include media('md')
+    .nav-buttons
+      display: inline
+  @include media('xs')
+    button
+      display: inline
+    .nav-buttons
+      display: none
+
+.nav-buttons
+  a
+    padding-right: 1rem
+    text-decoration: none
+    color: white

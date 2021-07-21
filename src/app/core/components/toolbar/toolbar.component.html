@@ -1,2 +1,15 @@
-<h1>Mail Receptionist</h1>
-<div class="more"></div>
+<mat-toolbar color="primary" class="navbar" >
+  <span>Mail Receptionist</span>
+
+  <button mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <mat-menu #menu="matMenu" [overlapTrigger]="false">
+    <a mat-menu-item *ngFor="let item of items" [routerLink]="item.url" routerLinkActive="active">{{item.nombre}}</a>
+  </mat-menu>
+
+  <div class="nav-buttons" >
+    <a *ngFor="let item of items" [routerLink]="item.url" routerLinkActive="active">{{item.nombre}}</a>
+  </div>
+</mat-toolbar>

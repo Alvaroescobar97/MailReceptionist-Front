@@ -5,18 +5,19 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './interceptor/token-interceptor';
 import { AuthInterceptor } from './interceptor/auth-interceptor';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
 import { HttpService } from './services/http.service';
 import { ManejadorError } from './interceptor/manejador-error';
 import { RouterModule } from '@angular/router';
+import { MaterialModule } from '../material/material.module';
 
 @NgModule({
-  declarations: [ToolbarComponent, NavbarComponent],
+  declarations: [ToolbarComponent],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    MaterialModule
   ],
-  exports: [ToolbarComponent, NavbarComponent],
+  exports: [ToolbarComponent],
   providers: [
     HttpService,
     SecurityGuard,

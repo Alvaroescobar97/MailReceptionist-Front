@@ -1,0 +1,28 @@
+@import "../../../assets/sass/modules/_mixins.sass"
+
+$direction: column
+
+.flex
+  margin-top: 2rem
+  display: flex
+  @include media('sm')
+    flex-direction: $direction
+
+.flex
+  div
+    display: flex
+    align-items: center
+    margin: 0 3rem
+    @include media('sm')
+      justify-content: center
+  h1
+    text-align: justify
+    span
+      font-weight: bold
+  img
+    flex-basis: 50%
+    border-radius: 25px
+    width: 100%
+    @include media('sm')
+      width: 40%
+      margin-bottom: 2rem
