@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Envio } from '../../shared/model/envio';
+import { EnvioService } from '../../shared/service/envio.service';
 
 @Component({
   selector: 'app-listar-envio',
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListarEnvioComponent implements OnInit {
 
-  constructor() { }
+  public listaEnvios : Observable<Envio[]>;
+
+
+  constructor(protected envioService: EnvioService) {
+
+  }
 
   ngOnInit(): void {
+    this.listaEnvios = this.envioService.consultar();
   }
 
 }
+

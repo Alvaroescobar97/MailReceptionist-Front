@@ -3,8 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  endpoint: '/prospectos-vida'
+  production: true,
+  endpoint: '/Dispatch'
 };
 
 /*

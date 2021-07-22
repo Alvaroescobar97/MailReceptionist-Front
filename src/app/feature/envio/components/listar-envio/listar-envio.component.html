@@ -1,1 +1,20 @@
-<p>listar-envio works!</p>
+<table style="width:100%" >
+  <tr>
+    <th>ID</th>
+    <th>Emisor</th>
+    <th>Receptor</th>
+    <th>Fecha</th>
+    <th>Tipo</th>
+    <th>Peso</th>
+    <th>Valor</th>
+  </tr>
+  <tr *ngFor="let item of listaEnvios | async">
+    <td>{{item.id}}</td>
+    <td>{{item.cedulaEmisor}}</td>
+    <td>{{item.cedulaReceptor}}</td>
+    <td>{{item.fecha |date:"mediumDate" }}</td>
+    <td>{{item.tipo}}</td>
+    <td>{{item.peso}}</td>
+    <td>{{item.valor}}</td>
+  </tr>
+</table>

@@ -4,17 +4,21 @@ import { ListarEnvioComponent } from './components/listar-envio/listar-envio.com
 import { EnvioRoutingModule } from './envio-routing.module';
 import { EnvioService } from './shared/service/envio.service';
 import { EnvioComponent } from './components/envio/envio.component';
+import { MaterialModule } from 'src/app/material/material.module';
+import { CrearEnvioComponent } from './components/crear-envio/crear-envio.component';
 
 
 
 @NgModule({
   declarations: [
     ListarEnvioComponent,
-    EnvioComponent
+    EnvioComponent,
+    CrearEnvioComponent
   ],
   imports: [
     EnvioRoutingModule,
-    SharedModule
+    SharedModule,
+    MaterialModule
   ],
   providers: [EnvioService]
 })

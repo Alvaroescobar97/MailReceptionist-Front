@@ -1,0 +1,15 @@
+@import "../../../../../assets/sass/modules/_mixins.sass"
+
+.active
+  border-bottom: 1px solid black
+
+.nav
+  display: flex
+  font: 100 Roboto, "Helvetica Neue", sans-serif
+  a
+    text-decoration: none
+    color: black
+    margin-right: 1rem
+  @include media('xs')
+    flex-direction: column
+    height: 100px

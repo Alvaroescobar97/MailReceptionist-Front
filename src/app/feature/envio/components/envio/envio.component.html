@@ -1,6 +1,12 @@
+<!--
 <nav>
   <a id="linkEnvio" routerLink="./" routerLinkActive="active"
     [routerLinkActiveOptions]="{ exact: true }">Envio</a>
   <a id="linkListarEnvio" routerLink="./listar" routerLinkActive="active">listar envio</a>
-</nav>
+</nav>-->
+<mat-toolbar class="nav">
+  <a id="linkEnvio" routerLink="./" routerLinkActive="active">Envio</a>
+  <a id="linkListarEnvio" routerLink="./listar" routerLinkActive="active">Listar Envios</a>
+  <a id="linkCrearEnvio" routerLink="./crear" routerLinkActive="active">Crear Envio</a>
+</mat-toolbar>
 <router-outlet></router-outlet>
