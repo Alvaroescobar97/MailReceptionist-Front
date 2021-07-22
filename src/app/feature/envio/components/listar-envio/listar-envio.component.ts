@@ -12,6 +12,8 @@ export class ListarEnvioComponent implements OnInit {
 
   public listaEnvios : Observable<Envio[]>;
 
+  displayedColumns: string[] = ['id', 'emisor', 'receptor', 'fecha', 'tipo','peso','valor'];
+  dataSource:any;
 
   constructor(protected envioService: EnvioService) {
 

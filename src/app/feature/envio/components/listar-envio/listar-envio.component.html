@@ -1,20 +1,49 @@
-<table style="width:100%" >
-  <tr>
-    <th>ID</th>
-    <th>Emisor</th>
-    <th>Receptor</th>
-    <th>Fecha</th>
-    <th>Tipo</th>
-    <th>Peso</th>
-    <th>Valor</th>
-  </tr>
-  <tr *ngFor="let item of listaEnvios | async">
-    <td>{{item.id}}</td>
-    <td>{{item.cedulaEmisor}}</td>
-    <td>{{item.cedulaReceptor}}</td>
-    <td>{{item.fecha |date:"mediumDate" }}</td>
-    <td>{{item.tipo}}</td>
-    <td>{{item.peso}}</td>
-    <td>{{item.valor}}</td>
-  </tr>
-</table>
+<div class="container">
+  <table mat-table [dataSource]="listaEnvios | async" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="emisor">
+      <th mat-header-cell *matHeaderCellDef> Cedula Emisor </th>
+      <td mat-cell *matCellDef="let element"> {{element.cedulaEmisor}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="receptor">
+      <th mat-header-cell *matHeaderCellDef> Cedula Receptor </th>
+      <td mat-cell *matCellDef="let element"> {{element.cedulaReceptor}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="fecha">
+      <th mat-header-cell *matHeaderCellDef> Fecha </th>
+      <td mat-cell *matCellDef="let element"> {{element.fecha |date:"mediumDate"}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="tipo">
+      <th mat-header-cell *matHeaderCellDef> Tipo </th>
+      <td mat-cell *matCellDef="let element"> {{element.tipo}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="peso">
+      <th mat-header-cell *matHeaderCellDef> Peso </th>
+      <td mat-cell *matCellDef="let element"> {{element.peso}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="valor">
+      <th mat-header-cell *matHeaderCellDef> Valor </th>
+      <td mat-cell *matCellDef="let element"> {{element.valor}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>

@@ -11,12 +11,12 @@ export class EnvioService {
   constructor(protected http: HttpService) {}
 
   public consultar() {
-    console.log(`${environment.endpoint}/envios`);
     return this.http.doGet<Envio[]>(`${environment.endpoint}/envios`, this.http.optsName('consultar envios'));
   }
 
   public guardar(envio: Envio) {
+    console.log(`${environment.endpoint}/envios`);
     return this.http.doPost<Envio, boolean>(`${environment.endpoint}/envios`, envio,
-                                                this.http.optsName('crear/actualizar envios'));
+                                                this.http.optsName('crear envio'));
   }
 }

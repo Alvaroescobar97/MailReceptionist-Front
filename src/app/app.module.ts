@@ -10,6 +10,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { EnvioModule } from './feature/envio/envio.module';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -25,7 +26,8 @@ import { EnvioModule } from './feature/envio/envio.module';
     EnvioModule,
     CoreModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule
   ],
   providers: [CookieService],
     bootstrap: [AppComponent],
