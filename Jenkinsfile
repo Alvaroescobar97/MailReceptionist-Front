@@ -28,7 +28,7 @@ pipeline {
           submoduleCfg: [],
           userRemoteConfigs: [[
           credentialsId: 'GitHub_alvaroescobar97',
-          url:'https://github.com/Alvaroescobar97/MailReceptionist'
+          url:'https://github.com/Alvaroescobar97/MailReceptionist-Front'
           ]]
         ])
 
@@ -45,7 +45,7 @@ pipeline {
 
     stage('Build') {
       steps {
-        sh 'ng build --prod --progress=false'
+        sh 'ng build --configuration production --progress=false'
       }
     }
   }
