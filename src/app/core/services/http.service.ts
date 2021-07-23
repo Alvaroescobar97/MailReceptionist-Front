@@ -56,6 +56,16 @@ export class HttpService {
     return this.http.post<R>(serviceUrl, body, ropts);
   }
 
+  public doPut<T, R>(serviceUrl: string, parametros: HttpParams, body: T, opts?: Options): Observable<R> {
+    const ropts = this.createOptions(opts);
+    const options = parametros !== null ? {
+      headers: ropts.headers,
+      params: parametros
+    } as Options : ropts;
+
+    return this.http.put<R>(serviceUrl, body, options);
+  }
+
   public doDelete<R>(serviceUrl: string, opts?: Options): Observable<R> {
     const ropts = this.createOptions(opts);
 

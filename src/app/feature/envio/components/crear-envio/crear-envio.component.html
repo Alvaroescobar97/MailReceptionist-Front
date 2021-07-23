@@ -20,7 +20,7 @@
         <mat-label>Cedula Receptor</mat-label>
         <input matInput placeholder="Cedula Receptor" required formControlName="cedulaReceptor" id="cedulaReceptor" name="cedulaReceptor">
         <mat-error *ngIf="envioForm.controls.cedulaReceptor.errors?.required">
-          Cedula del receptor es<strong>requerida</strong>
+          Cedula del receptor es <strong>requerida</strong>
         </mat-error>
       </mat-form-field>
 
@@ -63,6 +63,9 @@
         <input matInput type="number" placeholder="Ej: 35999" required formControlName="valor" id="valor" name="valor">
         <mat-error *ngIf="envioForm.controls.valor.errors?.required">
           El valor es un campo <strong>requerido</strong>
+        </mat-error>
+        <mat-error *ngIf="envioForm.controls.valor.errors?.min">
+          El valor minimo es <strong>0</strong>
         </mat-error>
       </mat-form-field>
 

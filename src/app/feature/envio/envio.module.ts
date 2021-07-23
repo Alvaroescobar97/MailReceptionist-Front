@@ -8,13 +8,15 @@ import { MaterialModule } from 'src/app/material/material.module';
 import { CrearEnvioComponent } from './components/crear-envio/crear-envio.component';
 import localeCo from "@angular/common/locales/es-CO";
 import { registerLocaleData } from "@angular/common";
+import { ActualizarEnvioComponent } from './components/actualizar-envio/actualizar-envio.component';
 registerLocaleData(localeCo, "es-CO");
 
 @NgModule({
   declarations: [
     ListarEnvioComponent,
     EnvioComponent,
-    CrearEnvioComponent
+    CrearEnvioComponent,
+    ActualizarEnvioComponent
   ],
   imports: [
     EnvioRoutingModule,
