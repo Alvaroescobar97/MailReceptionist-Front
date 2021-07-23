@@ -12,7 +12,7 @@
         <mat-label>Cedula Emisor</mat-label>
         <input matInput placeholder="Cedula Emisor" required formControlName="cedulaEmisor" id="cedulaEmisor" name="cedulaEmisor">
         <mat-error *ngIf="envioForm.controls.cedulaEmisor.errors?.required">
-          La cedula del emisor es un campo <strong>requerido</strong>
+          Cedula del emisor es <strong>requerida</strong>
         </mat-error>
       </mat-form-field>
 
@@ -20,7 +20,7 @@
         <mat-label>Cedula Receptor</mat-label>
         <input matInput placeholder="Cedula Receptor" required formControlName="cedulaReceptor" id="cedulaReceptor" name="cedulaReceptor">
         <mat-error *ngIf="envioForm.controls.cedulaReceptor.errors?.required">
-          La cedula del receptor es un campo <strong>requerido</strong>
+          Cedula del receptor es<strong>requerida</strong>
         </mat-error>
       </mat-form-field>
 
