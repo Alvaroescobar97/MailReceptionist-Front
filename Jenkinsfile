@@ -43,13 +43,6 @@ pipeline {
       }
     }
 
-    stage('Ng lint') {
-      steps {
-        echo "------------>Build<-----------"
-          sh 'ng lint'
-      }
-    }
-
     stage('Build') {
       steps {
         sh 'ng build --prod --progress=false'
