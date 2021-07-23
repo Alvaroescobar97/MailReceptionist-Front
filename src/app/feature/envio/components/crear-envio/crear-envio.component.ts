@@ -1,6 +1,7 @@
 import { formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { EnvioService } from '../../shared/service/envio.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class CrearEnvioComponent implements OnInit {
 
   envioForm: FormGroup;
 
-  constructor(protected envioService: EnvioService) {
+  constructor(protected envioService: EnvioService,private router: Router) {
 
   }
 
@@ -28,7 +29,10 @@ export class CrearEnvioComponent implements OnInit {
       "UTC"
     )} 00:00:00` };
     console.log(body);
-    this.envioService.guardar(body).subscribe(res=> console.log(res),err=> console.log(err));
+    this.envioService.guardar(body).subscribe(res=> {
+      console.log(res);
+      this.router.navigate(['/listar']);
+    },err=> console.log(err));
   }
 
   private construirFormulario(){
@@ -38,8 +42,7 @@ export class CrearEnvioComponent implements OnInit {
       fecha: new FormControl('', [Validators.required]),
       tipo: new FormControl('', [Validators.required]),
       peso: new FormControl({value:0}, [Validators.required, Validators.min(0)]),
-      valor: new FormControl(0, [Validators.required, Validators.min(0)])
+      valor: new FormControl({value:0}, [Validators.required, Validators.min(0)])
     });
   }
-
 }

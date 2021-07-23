@@ -24,8 +24,12 @@ form
 .mat-form-field
   display: flex
   justify-content: center
-  input[type="number"]
-    -moz-appearance: textfield
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button
+  -webkit-appearance: none
+input[type="number"]
+  -moz-appearance: textfield
 .contenido
   display: flex
   flex-wrap: wrap

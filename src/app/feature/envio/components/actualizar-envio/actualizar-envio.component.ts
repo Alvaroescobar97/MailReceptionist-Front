@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Envio } from '../../shared/model/envio';
 import { formatDate } from '@angular/common';
 import { EnvioService } from '../../shared/service/envio.service';
@@ -15,7 +15,7 @@ export class ActualizarEnvioComponent implements OnInit {
 
   actualizarEnvioForm: FormGroup;
 
-  constructor(protected envioService: EnvioService,private route: ActivatedRoute) {
+  constructor(protected envioService: EnvioService,private route: ActivatedRoute,private router: Router) {
 
 
   }
@@ -54,9 +54,8 @@ export class ActualizarEnvioComponent implements OnInit {
       fecha: new FormControl('', [Validators.required]),
       tipo: new FormControl('', [Validators.required]),
       peso: new FormControl({value:0}, [Validators.required, Validators.min(0)]),
-      valor: new FormControl(0, [Validators.required, Validators.min(0)])
+      valor: new FormControl({value:0}, [Validators.required, Validators.min(0)])
     });
-
   }
 
   actualizar(){
@@ -67,7 +66,10 @@ export class ActualizarEnvioComponent implements OnInit {
       "UTC"
     )} 00:00:00` };
     console.log(body);
-    this.envioService.actualizar(body,this.envio.id).subscribe(res=> console.log(res),err=> console.log(err));
+    this.envioService.actualizar(body,this.envio.id).subscribe(res=> {
+      console.log(res);
+      this.router.navigate(['/listar']);
+    },err=> console.log(err));
   }
 
 }
