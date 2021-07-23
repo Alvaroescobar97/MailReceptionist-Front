@@ -19,7 +19,7 @@ const routes: Routes = [
       component: CrearEnvioComponent
     },
     {
-      path: 'actualizar/:id',
+      path: 'actualizar',
       component: ActualizarEnvioComponent
     }
     ]

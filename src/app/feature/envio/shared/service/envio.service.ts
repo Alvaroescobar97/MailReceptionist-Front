@@ -15,6 +15,10 @@ export class EnvioService {
   }
 
   public guardar(envio: Envio) {
-    return this.http.doPost<Envio, Number>(`${environment.endpoint}/envios`,envio)
+    return this.http.doPost<Envio, Number>(`${environment.endpoint}/envios`,envio);
+  }
+
+  public actualizar(envio: Envio, id: Number) {
+    return this.http.doPut<Envio, Number>(`${environment.endpoint}/envios/${id}`,envio);
   }
 }

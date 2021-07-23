@@ -1,1 +1,81 @@
-<p>actualizar-envio works!</p>
+<form [formGroup]="actualizarEnvioForm" (ngSubmit)="actualizar()">
+
+  <mat-card class="example-card">
+
+    <mat-card-header>
+      <mat-card-title>Actualizar Envio</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content class="contenido">
+
+      <mat-form-field>
+        <mat-label>Cedula Emisor</mat-label>
+        <input matInput placeholder="Cedula Emisor" required formControlName="cedulaEmisor" id="cedulaEmisor" name="cedulaEmisor">
+        <mat-error *ngIf="actualizarEnvioForm.controls.cedulaEmisor.errors?.required">
+          Cedula del emisor es <strong>requerida</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Cedula Receptor</mat-label>
+        <input matInput placeholder="Cedula Receptor" required formControlName="cedulaReceptor" id="cedulaReceptor" name="cedulaReceptor">
+        <mat-error *ngIf="actualizarEnvioForm.controls.cedulaReceptor.errors?.required">
+          Cedula del receptor es <strong>requerida</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field >
+        <mat-label>Fecha</mat-label>
+        <input matInput [matDatepicker]="datepicker" formControlName="fecha" id="fecha" name="fecha">
+        <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+        <mat-datepicker #datepicker>
+          <mat-datepicker-actions>
+            <button mat-button matDatepickerCancel>Cancel</button>
+            <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+          </mat-datepicker-actions>
+        </mat-datepicker>
+        <mat-error *ngIf="actualizarEnvioForm.controls.fecha.errors?.required">
+          La fecha es un campo <strong>requerido</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Tipo</mat-label>
+        <mat-select formControlName="tipo" id="tipo" name="tipo">
+          <mat-option value="PAQUETE">Paquete</mat-option>
+          <mat-option value="CARTA">Carta</mat-option>
+        </mat-select>
+        <mat-error *ngIf="actualizarEnvioForm.controls.tipo.errors?.required">
+          El tipo es un campo <strong>requerido</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field floatLabel="auto" hideRequiredMarker>
+        <mat-label>Peso (KG)</mat-label>
+        <input matInput disabled type="number" placeholder="Ej: 10.5" required formControlName="peso" id="peso" name="peso">
+        <mat-error *ngIf="actualizarEnvioForm.controls.peso.errors?.min">
+          El peso minimo es <strong>0</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Valor</mat-label>
+        <input matInput type="number" placeholder="Ej: 35999" required formControlName="valor" id="valor" name="valor">
+        <mat-error *ngIf="actualizarEnvioForm.controls.valor.errors?.required">
+          El valor es un campo <strong>requerido</strong>
+        </mat-error>
+        <mat-error *ngIf="actualizarEnvioForm.controls.valor.errors?.min">
+          El valor minimo es <strong>0</strong>
+        </mat-error>
+      </mat-form-field>
+
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit">Actualizar</button>
+    </mat-card-actions>
+
+  </mat-card>
+
+</form>
+

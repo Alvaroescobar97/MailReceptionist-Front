@@ -1,0 +1,31 @@
+@import "../../../../../assets/sass/modules/_mixins.sass"
+
+form
+  margin-top: 2rem
+  display: flex
+  justify-content: center
+
+.mat-card
+  width: 25vw
+  @include media('md')
+    width: 50vw
+  @include media('xs')
+    width: 100vw
+
+.mat-card-header
+  justify-content: center
+
+.mat-card-actions
+  display: flex
+  justify-content: center
+
+.mat-form-field
+  display: flex
+  justify-content: center
+  input[type="number"]
+    -moz-appearance: textfield
+.contenido
+  display: flex
+  flex-wrap: wrap
+  flex-direction: column
+  justify-content: center
