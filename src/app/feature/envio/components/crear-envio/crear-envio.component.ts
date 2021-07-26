@@ -41,8 +41,8 @@ export class CrearEnvioComponent implements OnInit {
       cedulaReceptor: new FormControl('', [Validators.required, Validators.maxLength(12)]),
       fecha: new FormControl('', [Validators.required]),
       tipo: new FormControl('', [Validators.required]),
-      peso: new FormControl({value:0}, [Validators.required, Validators.min(0)]),
-      valor: new FormControl({value:0}, [Validators.required, Validators.min(0)])
+      peso: new FormControl({value: 0}, [Validators.required, Validators.min(0)]),
+      valor: new FormControl({value: 0}, [Validators.required, Validators.min(0)])
     });
   }
 }

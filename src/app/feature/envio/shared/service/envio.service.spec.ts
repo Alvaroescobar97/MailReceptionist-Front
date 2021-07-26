@@ -29,7 +29,8 @@ describe('EnvioService', () => {
 
   it('deberia listar envios', () => {
     const dummyEnvios = [
-      new Envio(1, '123456789', '987654321', new Date(2021, 7, 26), 'PAQUETE', 20.5, 25000), new Envio(2, '987654321', '123456789', new Date(2021, 7, 26), 'CARTA', 0, 12500)
+      new Envio(1, '123456789', '987654321', new Date(2021, 7, 26), 'PAQUETE', 20.5, 25000),
+      new Envio(2, '987654321', '123456789', new Date(2021, 7, 26), 'CARTA', 0, 12500)
     ];
     service.consultar().subscribe(envios => {
       expect(envios.length).toBe(2);

@@ -3,9 +3,7 @@ import { HttpService } from '@core/services/http.service';
 import { environment } from 'src/environments/environment';
 import { Envio } from '../model/envio';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class EnvioService {
 
   constructor(protected http: HttpService) {}
