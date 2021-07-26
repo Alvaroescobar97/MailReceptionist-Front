@@ -10,7 +10,7 @@ describe('workspace-project App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('Angular Seed');
+    expect(page.getTitleText()).toEqual('Mail Receptionist la aplicación que te permite gestionar los paquetes o cartas que envias a otros clientes registrados.');
   });
 
   afterEach(async () => {
