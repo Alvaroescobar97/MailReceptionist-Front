@@ -45,6 +45,7 @@ export class ActualizarEnvioComponent implements OnInit {
     this.actualizarEnvioForm.get('tipo').patchValue(this.envio.tipo);
     this.actualizarEnvioForm.get('peso').patchValue(this.envio.peso);
     this.actualizarEnvioForm.get('valor').patchValue(this.envio.valor);
+
   }
 
   private construirFormulario(){
