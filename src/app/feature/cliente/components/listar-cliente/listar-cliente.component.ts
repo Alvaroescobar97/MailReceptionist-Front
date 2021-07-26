@@ -10,13 +10,12 @@ import { ClienteService } from '../../shared/service/cliente.service';
 })
 export class ListarClienteComponent implements OnInit {
 
-  public listaClientes: Observable< Cliente[] >;
+  listaClientes: Observable< Cliente[] >;
   displayedColumns: string[] = ['cedula', 'nombre', 'direccion', 'telefono', 'ciudad'];
-  dataSource: any;
 
-  constructor(protected clienteService: ClienteService) {  }
+  constructor(protected clienteService: ClienteService) {   }
 
-  ngOnInit(): void {
+  ngOnInit(){
     this.listaClientes = this.clienteService.consultar();
   }
 

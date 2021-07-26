@@ -11,10 +11,11 @@ import { EnvioService } from '../../shared/service/envio.service';
 })
 export class CrearEnvioComponent implements OnInit {
 
+  paquete:boolean;
   envioForm: FormGroup;
 
   constructor(protected envioService: EnvioService, private router: Router) {
-
+    this.paquete=false;
   }
 
   ngOnInit(): void {
@@ -42,7 +43,7 @@ export class CrearEnvioComponent implements OnInit {
       fecha: new FormControl('', [Validators.required]),
       tipo: new FormControl('', [Validators.required]),
       peso: new FormControl({value: 0}, [Validators.required, Validators.min(0)]),
-      valor: new FormControl({value: 0}, [Validators.required, Validators.min(0)])
+      valor: new FormControl(0, [Validators.required, Validators.min(0)])
     });
   }
 }
