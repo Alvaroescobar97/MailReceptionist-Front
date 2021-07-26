@@ -9,8 +9,8 @@ import { of } from 'rxjs';
 import { MaterialModule } from 'src/app/material/material.module';
 import { EnvioService } from '../../shared/service/envio.service';
 
-import localeCo from "@angular/common/locales/es-CO";
-import { registerLocaleData } from "@angular/common";
+import localeCo from '@angular/common/locales/es-CO';
+import { registerLocaleData } from '@angular/common';
 
 import { CrearEnvioComponent } from './crear-envio.component';
 
@@ -34,7 +34,7 @@ describe('CrearEnvioComponent', () => {
       providers: [EnvioService, HttpService]
     })
     .compileComponents();
-    registerLocaleData(localeCo, "es-CO");
+    registerLocaleData(localeCo, 'es-CO');
   });
 
   beforeEach(() => {

@@ -10,7 +10,7 @@ describe('ToolbarComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ ToolbarComponent ],
-      imports:[MaterialModule]
+      imports: [ MaterialModule ]
     })
     .compileComponents();
   }));

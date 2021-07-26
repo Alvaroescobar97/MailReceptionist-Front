@@ -1,11 +1,11 @@
 export class Cliente {
-  cedula: String;
-  nombre: String;
-  direccion: String;
-  telefono: Number;
-  ciudad: String;
+  cedula: string;
+  nombre: string;
+  direccion: string;
+  telefono: number;
+  ciudad: string;
 
-  constructor(cedula: String, nombre: String,direccion: String,telefono: Number,ciudad: String) {
+  constructor(cedula: string, nombre: string, direccion: string, telefono: number, ciudad: string) {
     this.cedula = cedula;
     this.nombre = nombre;
     this.direccion = direccion;

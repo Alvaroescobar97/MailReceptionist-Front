@@ -13,7 +13,7 @@ export class CrearEnvioComponent implements OnInit {
 
   envioForm: FormGroup;
 
-  constructor(protected envioService: EnvioService,private router: Router) {
+  constructor(protected envioService: EnvioService, private router: Router) {
 
   }
 
@@ -22,17 +22,17 @@ export class CrearEnvioComponent implements OnInit {
   }
 
   crear(){
-    let body = {...this.envioForm.value, fecha: `${formatDate(
-      this.envioForm.get("fecha")?.value,
-      "yyyy-MM-dd",
-      "es-CO",
-      "UTC"
+    const body = {...this.envioForm.value, fecha: `${formatDate(
+      this.envioForm.get('fecha')?.value,
+      'yyyy-MM-dd',
+      'es-CO',
+      'UTC'
     )} 00:00:00` };
     console.log(body);
-    this.envioService.guardar(body).subscribe(res=> {
+    this.envioService.guardar(body).subscribe(res => {
       console.log(res);
       this.router.navigate(['/listar']);
-    },err=> console.log(err));
+    }, err => console.log(err));
   }
 
   private construirFormulario(){

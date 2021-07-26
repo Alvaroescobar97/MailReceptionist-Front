@@ -11,10 +11,10 @@ import { EnvioService } from '../../shared/service/envio.service';
 })
 export class ListarEnvioComponent implements OnInit {
 
-  public listaEnvios : Observable<Envio[]>;
+  public listaEnvios: Observable<Envio[]>;
 
-  displayedColumns: string[] = ['id', 'emisor', 'receptor', 'fecha', 'tipo','peso','valor','action'];
-  dataSource:any;
+  displayedColumns: string[] = ['id', 'emisor', 'receptor', 'fecha', 'tipo', 'peso', 'valor', 'action'];
+  dataSource: any;
 
   constructor(protected envioService: EnvioService, private router: Router) {
 
@@ -24,7 +24,7 @@ export class ListarEnvioComponent implements OnInit {
     this.listaEnvios = this.envioService.consultar();
   }
 
-  onEdit(element:any){
+  onEdit(element: any){
     console.log(element);
     this.router.navigate(['../actualizar', { id: element.id }]);
   }

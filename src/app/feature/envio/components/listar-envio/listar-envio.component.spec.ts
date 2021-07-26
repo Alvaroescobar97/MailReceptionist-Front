@@ -12,7 +12,10 @@ describe('ListarEnvioComponent', () => {
   let component: ListarEnvioComponent;
   let fixture: ComponentFixture<ListarEnvioComponent>;
   let envioService: EnvioService;
-  const listaEnvios: Envio[] = [new Envio(1,'123456789', '987654321', new Date(2021,7,26),'PAQUETE',20.5,25000), new Envio(2,'987654321', '123456789',new Date(2021,7,26),'CARTA',0,12500)];
+  const listaEnvios: Envio[] = [
+    new Envio(1, '123456789', '987654321', new Date(2021, 7, 26), 'PAQUETE', 20.5, 25000),
+    new Envio(2, '987654321', '123456789', new Date(2021, 7, 26), 'CARTA', 0, 12500)
+  ];
 
 
   beforeEach(async () => {
@@ -40,7 +43,7 @@ describe('ListarEnvioComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
-    component.listaEnvios.subscribe(resultado=>{
+    component.listaEnvios.subscribe(resultado => {
       expect(resultado.length).toBe(2);
     });
   });

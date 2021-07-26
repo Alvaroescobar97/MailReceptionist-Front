@@ -15,10 +15,7 @@ export class ActualizarEnvioComponent implements OnInit {
 
   actualizarEnvioForm: FormGroup;
 
-  constructor(protected envioService: EnvioService,private route: ActivatedRoute,private router: Router) {
-
-
-  }
+  constructor(protected envioService: EnvioService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.envio = {
@@ -27,17 +24,17 @@ export class ActualizarEnvioComponent implements OnInit {
       cedulaReceptor: this.route.snapshot.queryParams.cedulaReceptor,
       fecha: this.route.snapshot.queryParams.fecha,
       tipo: this.route.snapshot.queryParams.tipo,
-      peso:this.route.snapshot.queryParams.peso,
+      peso: this.route.snapshot.queryParams.peso,
       valor: this.route.snapshot.queryParams.valor,
     };
 
     console.log(this.envio);
     this.construirFormulario();
-    let fechaFormateada = `${formatDate(
+    const fechaFormateada = `${formatDate(
       this.envio.fecha,
-      "yyyy-MM-dd",
-      "es-CO",
-      "UTC"
+      'yyyy-MM-dd',
+      'es-CO',
+      'UTC'
     )}`;
     this.actualizarEnvioForm.get('cedulaEmisor').patchValue(this.envio.cedulaEmisor);
     this.actualizarEnvioForm.get('cedulaReceptor').patchValue(this.envio.cedulaReceptor);
@@ -54,23 +51,23 @@ export class ActualizarEnvioComponent implements OnInit {
       cedulaReceptor: new FormControl('', [Validators.required, Validators.maxLength(12)]),
       fecha: new FormControl('', [Validators.required]),
       tipo: new FormControl('', [Validators.required]),
-      peso: new FormControl({value:0}, [Validators.required, Validators.min(0)]),
-      valor: new FormControl({value:0}, [Validators.required, Validators.min(0)])
+      peso: new FormControl({ value: 0 }, [Validators.required, Validators.min(0)]),
+      valor: new FormControl({ value: 0 }, [Validators.required, Validators.min(0)])
     });
   }
 
   actualizar(){
-    let body = {...this.actualizarEnvioForm.value, fecha: `${formatDate(
-      this.actualizarEnvioForm.get("fecha")?.value,
-      "yyyy-MM-dd",
-      "es-CO",
-      "UTC"
+    const body = {...this.actualizarEnvioForm.value, fecha: `${formatDate(
+      this.actualizarEnvioForm.get('fecha')?.value,
+      'yyyy-MM-dd',
+      'es-CO',
+      'UTC'
     )} 00:00:00` };
     console.log(body);
-    this.envioService.actualizar(body,this.envio.id).subscribe(res=> {
+    this.envioService.actualizar(body, this.envio.id).subscribe(res => {
       console.log(res);
       this.router.navigate(['/listar']);
-    },err=> console.log(err));
+    }, err => console.log(err));
   }
 
 }

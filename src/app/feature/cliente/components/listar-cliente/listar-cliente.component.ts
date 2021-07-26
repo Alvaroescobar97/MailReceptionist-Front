@@ -10,10 +10,9 @@ import { ClienteService } from '../../shared/service/cliente.service';
 })
 export class ListarClienteComponent implements OnInit {
 
-  public listaClientes : Observable<Cliente[]>;
-
+  public listaClientes: Observable< Cliente[] >;
   displayedColumns: string[] = ['cedula', 'nombre', 'direccion', 'telefono', 'ciudad'];
-  dataSource:any;
+  dataSource: any;
 
   constructor(protected clienteService: ClienteService) {  }
 

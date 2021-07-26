@@ -10,8 +10,8 @@ import { MaterialModule } from 'src/app/material/material.module';
 import { Envio } from '../../shared/model/envio';
 import { EnvioService } from '../../shared/service/envio.service';
 
-import localeCo from "@angular/common/locales/es-CO";
-import { registerLocaleData } from "@angular/common";
+import localeCo from '@angular/common/locales/es-CO';
+import { registerLocaleData } from '@angular/common';
 
 import { ActualizarEnvioComponent } from './actualizar-envio.component';
 
@@ -19,7 +19,7 @@ describe('ActualizarEnvioComponent', () => {
   let component: ActualizarEnvioComponent;
   let fixture: ComponentFixture<ActualizarEnvioComponent>;
   let envioService: EnvioService;
-  const envio: Envio = new Envio(1,'123456789', '987654321', new Date(2021,7,26),'PAQUETE',20.5,25000);
+  const envio: Envio = new Envio(1, '123456789', '987654321', new Date(2021, 7, 26), 'PAQUETE', 20.5, 25000);
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -36,7 +36,7 @@ describe('ActualizarEnvioComponent', () => {
       providers: [EnvioService, HttpService]
     })
     .compileComponents();
-    registerLocaleData(localeCo, "es-CO");
+    registerLocaleData(localeCo, 'es-CO');
   });
 
   beforeEach(() => {

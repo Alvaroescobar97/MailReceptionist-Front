@@ -21,13 +21,14 @@ describe('ClienteService', () => {
   });
 
   it('should be created', () => {
-    const clientService : ClienteService = TestBed.inject(ClienteService);
+    const clientService: ClienteService = TestBed.inject(ClienteService);
     expect(clientService).toBeTruthy();
   });
 
   it('deberia listar clientes', () => {
     const dummyClientes = [
-      new Cliente('123456789', 'Ferney','Cra 23 #34-45',123456789,'Buenaventura'), new Cliente('987654321', 'Santiago','Cra 12 #32-48',987654321,'Cartagena')
+      new Cliente('123456789', 'Ferney', 'Cra 23 #34-45', 123456789, 'Buenaventura'),
+      new Cliente('987654321', 'Santiago', 'Cra 12 #32-48', 987654321, 'Cartagena')
     ];
     service.consultar().subscribe(clientes => {
       expect(clientes.length).toBe(2);

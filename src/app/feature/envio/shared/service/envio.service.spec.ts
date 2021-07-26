@@ -22,14 +22,14 @@ describe('EnvioService', () => {
   });
 
   it('should be created', () => {
-    const envioService : EnvioService = TestBed.inject(EnvioService);
+    const envioService: EnvioService = TestBed.inject(EnvioService);
     expect(envioService).toBeTruthy();
   });
 
 
   it('deberia listar envios', () => {
     const dummyEnvios = [
-      new Envio(1,'123456789', '987654321', new Date(2021,7,26),'PAQUETE',20.5,25000), new Envio(2,'987654321', '123456789',new Date(2021,7,26),'CARTA',0,12500)
+      new Envio(1, '123456789', '987654321', new Date(2021, 7, 26), 'PAQUETE', 20.5, 25000), new Envio(2, '987654321', '123456789', new Date(2021, 7, 26), 'CARTA', 0, 12500)
     ];
     service.consultar().subscribe(envios => {
       expect(envios.length).toBe(2);
@@ -41,7 +41,7 @@ describe('EnvioService', () => {
   });
 
   it('deberia crear un envio', () => {
-    const dummyProducto = new Envio(1,'emisor', 'receptor', new Date(2021,7,26),'PAQUETE',10.5,22300);
+    const dummyProducto = new Envio(1, 'emisor', 'receptor', new Date(2021, 7, 26), 'PAQUETE', 10.5, 22300);
     service.guardar(dummyProducto).subscribe((respuesta) => {
       expect(respuesta).toEqual(1);
     });
@@ -51,11 +51,11 @@ describe('EnvioService', () => {
   });
 
   it('deberia actualizar un envio', () => {
-    const dummyProducto = new Envio(1,'emiEditado', 'recEditado', new Date(2021,7,26),'CARTA',0,22300);
+    const dummyProducto = new Envio(1, 'emiEditado', 'recEditado', new Date(2021, 7, 26), 'CARTA', 0, 22300);
     service.actualizar(dummyProducto, 1).subscribe((respuesta) => {
       expect(respuesta).toEqual(1);
     });
-    const req = httpMock.expectOne(apiEndpointEnvio+`/${dummyProducto.id}`);
+    const req = httpMock.expectOne(apiEndpointEnvio + `/${dummyProducto.id}`);
     expect(req.request.method).toBe('PUT');
     req.event(new HttpResponse<number>({body: 1}));
   });

@@ -13,7 +13,10 @@ describe('ListarClienteComponent', () => {
   let component: ListarClienteComponent;
   let fixture: ComponentFixture<ListarClienteComponent>;
   let clienteService: ClienteService;
-  const listaClientes: Cliente[] = [new Cliente('123456789', 'Ferney','Cra 23 #34-45',123456789,'Buenaventura'), new Cliente('987654321', 'Santiago','Cra 12 #32-48',987654321,'Cartagena')];
+  const listaClientes: Cliente[] = [
+    new Cliente('123456789', 'Ferney', 'Cra 23 #34-45', 123456789, 'Buenaventura'),
+    new Cliente('987654321', 'Santiago', 'Cra 12 #32-48', 987654321, 'Cartagena')
+  ];
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -40,7 +43,7 @@ describe('ListarClienteComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
-    component.listaClientes.subscribe(resultado=>{
+    component.listaClientes.subscribe(resultado => {
       expect(resultado.length).toBe(2);
     });
   });
