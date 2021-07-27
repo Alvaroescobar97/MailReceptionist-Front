@@ -1,7 +1,9 @@
 import { formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { DialogComponent } from '@shared/components/dialog/dialog.component';
 import { EnvioService } from '../../shared/service/envio.service';
 
 @Component({
@@ -14,7 +16,7 @@ export class CrearEnvioComponent implements OnInit {
   paquete:boolean;
   envioForm: FormGroup;
 
-  constructor(protected envioService: EnvioService, private router: Router) {
+  constructor(protected envioService: EnvioService, private router: Router, public dialog: MatDialog) {
     this.paquete=false;
   }
 
@@ -29,11 +31,18 @@ export class CrearEnvioComponent implements OnInit {
       'es-CO',
       'UTC'
     )} 00:00:00` };
-    console.log(body);
+
     this.envioService.guardar(body).subscribe(res => {
       console.log(res);
       this.router.navigate(['/listar']);
-    }, err => console.log(err));
+    }, err => {
+      console.log(err);
+      if(err.error.nombreExcepcion && err.error.mensaje){
+        let title_separated = err.error.nombreExcepcion.replace(/([a-z](?=[A-Z]))/g, '$1 ');
+        this.dialog.open(DialogComponent, {data:{ title: title_separated, content:err.error.mensaje}});
+        console.log(err.error.mensaje);
+      }
+    });
   }
 
   private construirFormulario(){

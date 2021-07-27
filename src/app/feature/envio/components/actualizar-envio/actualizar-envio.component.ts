@@ -4,6 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Envio } from '../../shared/model/envio';
 import { formatDate } from '@angular/common';
 import { EnvioService } from '../../shared/service/envio.service';
+import { DialogComponent } from '@shared/components/dialog/dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-actualizar-envio',
   templateUrl: './actualizar-envio.component.html',
@@ -15,7 +17,7 @@ export class ActualizarEnvioComponent implements OnInit {
 
   actualizarEnvioForm: FormGroup;
 
-  constructor(protected envioService: EnvioService, private route: ActivatedRoute, private router: Router) { }
+  constructor(protected envioService: EnvioService, private route: ActivatedRoute, private router: Router, public dialog: MatDialog){ }
 
   ngOnInit(): void {
     this.envio = {
@@ -63,11 +65,18 @@ export class ActualizarEnvioComponent implements OnInit {
       'es-CO',
       'UTC'
     )} 00:00:00` };
-    console.log(body);
+
     this.envioService.actualizar(body, this.envio.id).subscribe(res => {
       console.log(res);
       this.router.navigate(['/listar']);
-    }, err => console.log(err));
+    }, err => {
+      console.log(err);
+      if(err.error.nombreExcepcion && err.error.mensaje){
+        let title_separated = err.error.nombreExcepcion.replace(/([a-z](?=[A-Z]))/g, '$1 ');
+        this.dialog.open(DialogComponent, {data:{ title: title_separated, content:err.error.mensaje}});
+        console.log(err.error.mensaje);
+      }
+    });
   }
 
 }

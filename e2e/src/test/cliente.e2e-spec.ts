@@ -17,6 +17,6 @@ describe('workspace-project Cliente', () => {
       page.navigateTo();
       toolbar.clickBotonClientes();
 
-      expect(cliente.contarClientes()).toBe(3);
+      expect(cliente.contarClientes()).toBe(7);
     });
 });

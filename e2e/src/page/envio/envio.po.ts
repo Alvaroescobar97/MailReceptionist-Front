@@ -13,7 +13,7 @@ export class EnvioPage {
   private inputPesoEnvio = element(by.id('peso'));
   private inputValorEnvio = element(by.id('valor'));
 
-  private botonCrearEnvio = element(by.css('button.mat-raised-button'));
+  private botonSubmitEnvio = element(by.css('button.mat-raised-button'));
 
   async clickBotonCrearEnvio() {
     await this.linkCrearEnvio.click();
@@ -39,23 +39,39 @@ export class EnvioPage {
     await this.inputCedulaReceptorEnvio.sendKeys(cedulaReceptor);
   }
 
+  async limpiarFecha() {
+    await this.inputFechaEnvio.clear();
+  }
+
   async ingresarFecha(fecha) {
     await this.inputFechaEnvio.sendKeys(fecha);
+  }
+
+  async limpiarTipo() {
+    await this.selectTipoEnvio.clear();
   }
 
   async ingresarTipo(tipo) {
     await this.selectTipoEnvio.sendKeys(tipo);
   }
 
+  async limpiarPeso() {
+    await this.inputPesoEnvio.clear();
+  }
+
   async ingresarPeso(peso) {
     await this.inputPesoEnvio.sendKeys(peso);
+  }
+
+  async limpiarValor() {
+    await this.inputValorEnvio.clear();
   }
 
   async ingresarValor(valor) {
     await this.inputValorEnvio.sendKeys(valor);
   }
 
-  async clickBotonFormularioCrearEnvio() {
-    await this.botonCrearEnvio.click();
+  async clickBotonSubmitFormularioEnvio() {
+    await this.botonSubmitEnvio.click();
   }
 }

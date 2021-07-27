@@ -25,7 +25,6 @@ describe('workspace-project Envio', () => {
     it('Deberia crear envio', async () => {
       page.navigateTo();
       toolbar.clickBotonEnvio();
-
       envio.clickBotonListarEnvios();
       let enviosIniciales = await envio.contarEnvios();
 
@@ -35,16 +34,10 @@ describe('workspace-project Envio', () => {
       envio.ingresarCedulaReceptor("987654321");
       envio.ingresarFecha("10/04/2021");
       envio.ingresarTipo("PAQUETE");
-      /*
-      envio.ingresarTipo().then(()=>{
-        element.all(by.css('.mat-option')).get(0).click();
-      });*/
       envio.ingresarPeso(10.5);
       envio.ingresarValor(26500);
 
-
-
-      //await envio.clickBotonFormularioCrearEnvio();
+      await envio.clickBotonSubmitFormularioEnvio();
 
       await envio.clickBotonListarEnvios();
       let enviosFinales = await envio.contarEnvios();
@@ -52,12 +45,28 @@ describe('workspace-project Envio', () => {
       expect(enviosFinales).toEqual(enviosIniciales + 1);
     });
 
-    it('Deberia actualizar envio', () => {
+    it('Deberia actualizar envio', async () => {
       page.navigateTo();
       toolbar.clickBotonEnvio();
       envio.clickBotonListarEnvios();
+      let enviosIniciales = await envio.contarEnvios();
       envio.clickBotonActualizarEnvio();
 
+      envio.limpiarFecha();
+      envio.ingresarFecha("10/04/2021");
+      envio.limpiarTipo();
+      envio.ingresarTipo("CARTA");
+      envio.limpiarPeso();
+      envio.ingresarPeso(0);
+      envio.limpiarValor();
+      envio.ingresarValor(20500);
+
+      await envio.clickBotonSubmitFormularioEnvio();
+
+      await envio.clickBotonListarEnvios();
+      let enviosFinales = await envio.contarEnvios();
+      await browser.sleep(5000);
+      expect(enviosFinales).toEqual(enviosIniciales);
     });
 
 });
