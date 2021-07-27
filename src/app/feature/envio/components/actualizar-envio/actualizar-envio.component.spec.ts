@@ -14,6 +14,7 @@ import localeCo from '@angular/common/locales/es-CO';
 import { registerLocaleData } from '@angular/common';
 
 import { ActualizarEnvioComponent } from './actualizar-envio.component';
+import { ActivatedRoute } from '@angular/router';
 
 describe('ActualizarEnvioComponent', () => {
   let component: ActualizarEnvioComponent;
@@ -33,7 +34,14 @@ describe('ActualizarEnvioComponent', () => {
         MaterialModule,
         BrowserAnimationsModule
       ],
-      providers: [EnvioService, HttpService]
+      providers: [EnvioService, HttpService,{
+        provide: ActivatedRoute,
+        useValue: {
+          snapshot: {
+            queryParams: envio,
+          },
+        },
+      }]
     })
     .compileComponents();
     registerLocaleData(localeCo, 'es-CO');
@@ -50,18 +58,16 @@ describe('ActualizarEnvioComponent', () => {
   });
 
   it('should create', () => {
-    component.envio = envio;
     expect(component).toBeTruthy();
   });
 
   it('Actualizando envio', () => {
+    component.ngOnInit();
 
-    component.actualizarEnvioForm.controls.cedulaEmisor.setValue('123456789');
-    component.actualizarEnvioForm.controls.cedulaReceptor.setValue('987654321');
-    component.actualizarEnvioForm.controls.fecha.setValue('10/04/2021');
-    component.actualizarEnvioForm.controls.tipo.setValue('CARTA');
-    component.actualizarEnvioForm.controls.peso.setValue(0);
-    component.actualizarEnvioForm.controls.valor.setValue(10000);
+    component.actualizarEnvioForm.get('fecha').patchValue('10/04/2021');
+    component.actualizarEnvioForm.get('tipo').patchValue('CARTA');
+    component.actualizarEnvioForm.get('peso').patchValue(0);
+    component.actualizarEnvioForm.get('valor').patchValue(10000);
     expect(component.actualizarEnvioForm.valid).toBeTruthy();
 
     component.actualizar();

@@ -19,7 +19,7 @@ describe('workspace-project Envio', () => {
       toolbar.clickBotonEnvio();
       envio.clickBotonListarEnvios();
 
-      expect(envio.contarEnvios()).toBe(9);
+      expect(envio.contarEnvios()).toBe(11);
     });
 
     it('Deberia crear envio', async () => {
@@ -32,7 +32,7 @@ describe('workspace-project Envio', () => {
 
       envio.ingresarCedulaEmisor('123456789');
       envio.ingresarCedulaReceptor('987654321');
-      envio.ingresarFecha('10/04/2021');
+      envio.ingresarFecha('23/04/2021');
       envio.ingresarTipo('PAQUETE');
       envio.ingresarPeso(10.5);
       envio.ingresarValor(26500);

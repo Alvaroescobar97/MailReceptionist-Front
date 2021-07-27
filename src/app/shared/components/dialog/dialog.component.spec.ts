@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MaterialModule } from 'src/app/material/material.module';
 
 import { DialogComponent } from './dialog.component';
 
@@ -8,7 +10,11 @@ describe('DialogComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DialogComponent ]
+      declarations: [ DialogComponent ],
+      imports: [ MaterialModule ], // add here
+       providers: [
+        { provide: MAT_DIALOG_DATA, useValue: {} } // add here
+      ],
     })
     .compileComponents();
   });
