@@ -71,9 +71,9 @@ export class ActualizarEnvioComponent implements OnInit {
       this.router.navigate(['/listar']);
     }, err => {
       console.log(err);
-      if(err.error.nombreExcepcion && err.error.mensaje){
-        let title_separated = err.error.nombreExcepcion.replace(/([a-z](?=[A-Z]))/g, '$1 ');
-        this.dialog.open(DialogComponent, {data:{ title: title_separated, content:err.error.mensaje}});
+      if (err.error.nombreExcepcion && err.error.mensaje){
+        const titleSeparated = err.error.nombreExcepcion.replace(/([a-z](?=[A-Z]))/g, '$1 ');
+        this.dialog.open(DialogComponent, {data: { title: titleSeparated, content: err.error.mensaje}});
         console.log(err.error.mensaje);
       }
     });

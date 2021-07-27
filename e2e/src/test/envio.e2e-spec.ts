@@ -26,21 +26,21 @@ describe('workspace-project Envio', () => {
       page.navigateTo();
       toolbar.clickBotonEnvio();
       envio.clickBotonListarEnvios();
-      let enviosIniciales = await envio.contarEnvios();
+      const enviosIniciales = await envio.contarEnvios();
 
       envio.clickBotonCrearEnvio();
 
-      envio.ingresarCedulaEmisor("123456789");
-      envio.ingresarCedulaReceptor("987654321");
-      envio.ingresarFecha("10/04/2021");
-      envio.ingresarTipo("PAQUETE");
+      envio.ingresarCedulaEmisor('123456789');
+      envio.ingresarCedulaReceptor('987654321');
+      envio.ingresarFecha('10/04/2021');
+      envio.ingresarTipo('PAQUETE');
       envio.ingresarPeso(10.5);
       envio.ingresarValor(26500);
 
       await envio.clickBotonSubmitFormularioEnvio();
 
       await envio.clickBotonListarEnvios();
-      let enviosFinales = await envio.contarEnvios();
+      const enviosFinales = await envio.contarEnvios();
       await browser.sleep(5000);
       expect(enviosFinales).toEqual(enviosIniciales + 1);
     });
@@ -49,13 +49,13 @@ describe('workspace-project Envio', () => {
       page.navigateTo();
       toolbar.clickBotonEnvio();
       envio.clickBotonListarEnvios();
-      let enviosIniciales = await envio.contarEnvios();
+      const enviosIniciales = await envio.contarEnvios();
       envio.clickBotonActualizarEnvio();
 
       envio.limpiarFecha();
-      envio.ingresarFecha("10/04/2021");
+      envio.ingresarFecha('10/04/2021');
       envio.limpiarTipo();
-      envio.ingresarTipo("CARTA");
+      envio.ingresarTipo('CARTA');
       envio.limpiarPeso();
       envio.ingresarPeso(0);
       envio.limpiarValor();
@@ -64,7 +64,7 @@ describe('workspace-project Envio', () => {
       await envio.clickBotonSubmitFormularioEnvio();
 
       await envio.clickBotonListarEnvios();
-      let enviosFinales = await envio.contarEnvios();
+      const enviosFinales = await envio.contarEnvios();
       await browser.sleep(5000);
       expect(enviosFinales).toEqual(enviosIniciales);
     });

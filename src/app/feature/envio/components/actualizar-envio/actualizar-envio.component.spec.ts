@@ -58,7 +58,7 @@ describe('ActualizarEnvioComponent', () => {
 
     component.actualizarEnvioForm.controls.cedulaEmisor.setValue('123456789');
     component.actualizarEnvioForm.controls.cedulaReceptor.setValue('987654321');
-    component.actualizarEnvioForm.controls.fecha.setValue('2021-08-04T00:00:00Z');
+    component.actualizarEnvioForm.controls.fecha.setValue('10/04/2021');
     component.actualizarEnvioForm.controls.tipo.setValue('CARTA');
     component.actualizarEnvioForm.controls.peso.setValue(0);
     component.actualizarEnvioForm.controls.valor.setValue(10000);
