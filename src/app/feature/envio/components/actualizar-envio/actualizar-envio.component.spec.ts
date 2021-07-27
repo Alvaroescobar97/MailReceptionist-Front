@@ -34,7 +34,7 @@ describe('ActualizarEnvioComponent', () => {
         MaterialModule,
         BrowserAnimationsModule
       ],
-      providers: [EnvioService, HttpService,{
+      providers: [EnvioService, HttpService, {
         provide: ActivatedRoute,
         useValue: {
           snapshot: {
