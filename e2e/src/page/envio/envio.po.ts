@@ -6,6 +6,8 @@ export class EnvioPage {
   private linkActualizarEnvio = element.all(by.id('linkActualizarEnvio')).get(0);
   private listaEnvios = element.all(by.css('tr.mat-row.cdk-row.ng-star-inserted'));
 
+  private idsEnvios = element.all(by.css('.mat-cell.cdk-cell.cdk-column-id.mat-column-id.ng-star-inserted'));
+
   private inputCedulaEmisorEnvio = element(by.id('cedulaEmisor'));
   private inputCedulaReceptorEnvio = element(by.id('cedulaReceptor'));
   private inputFechaEnvio = element(by.id('fecha'));
@@ -38,7 +40,6 @@ export class EnvioPage {
   async ingresarCedulaReceptor(cedulaReceptor) {
     await this.inputCedulaReceptorEnvio.sendKeys(cedulaReceptor);
   }
-
   async limpiarFecha() {
     await this.inputFechaEnvio.clear();
   }
@@ -73,5 +74,13 @@ export class EnvioPage {
 
   async clickBotonSubmitFormularioEnvio() {
     await this.botonSubmitEnvio.click();
+  }
+
+  async idEnvioInicioLista() {
+    await this.idsEnvios.get(0).getText();
+  }
+
+  async idEnvioFinLista() {
+    await this.idsEnvios.get((await this.idsEnvios).length-1).getText();
   }
 }
