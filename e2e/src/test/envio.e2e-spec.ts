@@ -32,7 +32,7 @@ describe('workspace-project Envio', () => {
 
       envio.ingresarCedulaEmisor('123456789');
       envio.ingresarCedulaReceptor('987654321');
-      envio.ingresarFecha('8/04/2021');
+      envio.ingresarFecha('8/23/2021');
 
       envio.ingresarTipo('PAQUETE');
       envio.ingresarPeso(10.5);

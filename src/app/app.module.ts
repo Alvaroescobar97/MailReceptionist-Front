@@ -8,9 +8,7 @@ import { CoreModule } from '@core/core.module';
 import { CookieService } from 'ngx-cookie-service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
-import { EnvioModule } from './feature/envio/envio.module';
 import { FormsModule } from '@angular/forms';
-
 
 
 @NgModule({
@@ -21,7 +19,6 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    EnvioModule,
     CoreModule,
     BrowserAnimationsModule,
     MaterialModule,

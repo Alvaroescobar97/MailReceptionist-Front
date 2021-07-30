@@ -81,6 +81,6 @@ export class EnvioPage {
   }
 
   async idEnvioFinLista() {
-    await this.idsEnvios.get((await this.idsEnvios).length-1).getText();
+    await this.idsEnvios.get((await this.idsEnvios).length - 1).getText();
   }
 }
