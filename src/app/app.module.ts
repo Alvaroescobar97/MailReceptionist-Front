@@ -9,7 +9,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { FormsModule } from '@angular/forms';
-
+import { EnvioModule } from './feature/envio/envio.module';
 
 @NgModule({
   declarations: [
@@ -20,6 +20,7 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     CoreModule,
+    EnvioModule,
     BrowserAnimationsModule,
     MaterialModule,
     FormsModule
