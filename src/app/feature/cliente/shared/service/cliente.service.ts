@@ -11,4 +11,8 @@ export class ClienteService {
   public consultar() {
     return this.http.doGet<Cliente[]>(`${environment.endpoint}/clientes`);
   }
+
+  public guardar(cliente: Cliente) {
+    return this.http.doPost<Cliente,string>(`${environment.endpoint}/clientes`, cliente);
+  }
 }

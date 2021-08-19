@@ -1,0 +1,59 @@
+<form [formGroup]="clienteForm" (ngSubmit)="crear()">
+
+  <mat-card class="example-card">
+
+    <mat-card-header>
+      <mat-card-title>Crear Cliente</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content class="contenido">
+
+      <mat-form-field>
+        <mat-label>Cedula</mat-label>
+        <input matInput placeholder="Cedula" required formControlName="cedula" id="cedula" name="cedula">
+        <mat-error *ngIf="clienteForm.controls.cedula.errors?.required">
+          La cedula es <strong>requerida</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Nombre</mat-label>
+        <input matInput placeholder="Nombre" required formControlName="nombre" id="nombre" name="nombre">
+        <mat-error *ngIf="clienteForm.controls.nombre.errors?.required">
+          El nombre es <strong>requerido</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Direccion</mat-label>
+        <input matInput placeholder="Direccion" required formControlName="direccion" id="direccion" name="direccion">
+        <mat-error *ngIf="clienteForm.controls.direccion.errors?.required">
+          La direccion es <strong>requerida</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Telefono</mat-label>
+        <input matInput placeholder="Telefono" required formControlName="telefono" id="telefono" name="telefono">
+        <mat-error *ngIf="clienteForm.controls.telefono.errors?.required">
+          El telefono es <strong>requerido</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Ciudad</mat-label>
+        <input matInput placeholder="Ciudad" required formControlName="ciudad" id="ciudad" name="ciudad">
+        <mat-error *ngIf="clienteForm.controls.ciudad.errors?.required">
+          La ciudad es <strong>requerida</strong>
+        </mat-error>
+      </mat-form-field>
+
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button mat-raised-button type="submit" [color]="clienteForm.valid?'primary':'warn'" [disabled]="!clienteForm.valid">Crear</button>
+    </mat-card-actions>
+
+  </mat-card>
+
+</form>

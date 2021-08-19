@@ -3,7 +3,6 @@ import { HttpInterceptor, HttpHandler, HttpRequest, HttpEvent } from '@angular/c
 import { Observable } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 
-
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
 

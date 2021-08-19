@@ -11,8 +11,7 @@ export class ToolbarComponent implements OnInit {
   @Input()
   items: MenuItem[];
 
-  constructor() {  }
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 }

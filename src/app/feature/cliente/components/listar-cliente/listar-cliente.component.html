@@ -1,5 +1,8 @@
 
-  <h1>Listado de Clientes</h1>
+<h1>Listado de Clientes</h1>
+<div class="options">
+  <button id="linkCrearCliente" mat-raised-button color="primary" routerLink="../crear">Crear Cliente</button>
+</div>
 <div class="container">
 
   <table mat-table [dataSource]="listaClientes | async" class="mat-elevation-z8">
