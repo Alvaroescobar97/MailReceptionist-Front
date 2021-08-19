@@ -1,4 +1,3 @@
-import { formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
@@ -13,34 +12,23 @@ import { EnvioService } from '../../shared/service/envio.service';
 })
 export class CrearEnvioComponent implements OnInit {
 
-  paquete: boolean;
   envioForm: FormGroup;
 
-  constructor(protected envioService: EnvioService, private router: Router, public dialog: MatDialog) {
-    this.paquete = false;
-  }
+  constructor(protected envioService: EnvioService, private router: Router, public dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.construirFormulario();
   }
 
   crear(){
-    const body = {...this.envioForm.value, fecha: `${formatDate(
-      this.envioForm.get('fecha')?.value,
-      'yyyy-MM-dd',
-      'es-CO',
-      'UTC'
-    )} 00:00:00` };
+    const body = {...this.envioForm.value, fecha: this.envioService.formatearFecha(this.envioForm.get('fecha')?.value)};
 
-    this.envioService.guardar(body).subscribe(res => {
-      console.log(res);
+    this.envioService.guardar(body).subscribe(() => {
       this.router.navigate(['/listar']);
     }, err => {
-      console.log(err);
       if (err.error.nombreExcepcion && err.error.mensaje){
-        const titleSeparated = err.error.nombreExcepcion.replace(/([a-z](?=[A-Z]))/g, '$1 ');
-        this.dialog.open(DialogComponent, { data: { title: titleSeparated, content: err.error.mensaje}});
-        console.log(err.error.mensaje);
+        const tituloSeparado = err.error.nombreExcepcion.replace(/([a-z](?=[A-Z]))/g, '$1 ');
+        this.dialog.open(DialogComponent, { data: { title: tituloSeparado, content: err.error.mensaje}});
       }
     });
   }

@@ -5,8 +5,6 @@ import { ClienteRoutingModule } from './cliente-routing.module';
 import { MaterialModule } from 'src/app/material/material.module';
 import { ClienteService } from './shared/service/cliente.service';
 
-
-
 @NgModule({
   declarations: [
     ListarClienteComponent

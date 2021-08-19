@@ -12,16 +12,16 @@ const routes: Routes = [
     children: [
       {
         path: 'listar',
-      component: ListarEnvioComponent
-    },
-    {
-      path: 'crear',
-      component: CrearEnvioComponent
-    },
-    {
-      path: 'actualizar',
-      component: ActualizarEnvioComponent
-    }
+        component: ListarEnvioComponent
+      },
+      {
+        path: 'crear',
+        component: CrearEnvioComponent
+      },
+      {
+        path: 'actualizar',
+        component: ActualizarEnvioComponent
+      }
     ]
   }
 

@@ -13,7 +13,7 @@ export class ListarClienteComponent implements OnInit {
   listaClientes: Observable< Cliente[] >;
   displayedColumns: string[] = ['cedula', 'nombre', 'direccion', 'telefono', 'ciudad'];
 
-  constructor(protected clienteService: ClienteService) {   }
+  constructor(protected clienteService: ClienteService) {}
 
   ngOnInit(){
     this.listaClientes = this.clienteService.consultar();

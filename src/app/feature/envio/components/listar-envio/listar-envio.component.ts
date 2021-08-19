@@ -16,16 +16,13 @@ export class ListarEnvioComponent implements OnInit {
   displayedColumns: string[] = ['id', 'emisor', 'receptor', 'fecha', 'tipo', 'peso', 'valor', 'action'];
   dataSource: any;
 
-  constructor(protected envioService: EnvioService, private router: Router) {
-
-  }
+  constructor(protected envioService: EnvioService, private router: Router) {}
 
   ngOnInit(): void {
     this.listaEnvios = this.envioService.consultar();
   }
 
   onEdit(element: any){
-    console.log(element);
     this.router.navigate(['../actualizar', { id: element.id }]);
   }
 }

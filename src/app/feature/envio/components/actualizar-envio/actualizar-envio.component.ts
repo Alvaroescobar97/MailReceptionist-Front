@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Envio } from '../../shared/model/envio';
-import { formatDate } from '@angular/common';
 import { EnvioService } from '../../shared/service/envio.service';
 import { DialogComponent } from '@shared/components/dialog/dialog.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -17,7 +16,7 @@ export class ActualizarEnvioComponent implements OnInit {
 
   actualizarEnvioForm: FormGroup;
 
-  constructor(protected envioService: EnvioService, private route: ActivatedRoute, private router: Router, public dialog: MatDialog){ }
+  constructor(protected envioService: EnvioService, private route: ActivatedRoute, private router: Router, public dialog: MatDialog){}
 
   ngOnInit(): void {
     this.envio = {
@@ -30,21 +29,15 @@ export class ActualizarEnvioComponent implements OnInit {
       valor: this.route.snapshot.queryParams.valor,
     };
 
-    console.log(this.envio);
     this.construirFormulario();
-    const fechaFormateada = `${formatDate(
-      this.envio.fecha,
-      'yyyy-MM-dd',
-      'es-CO',
-      'UTC'
-    )}`;
+    const fechaFormateada = this.envioService.formatearFecha(this.envio.fecha);
+
     this.actualizarEnvioForm.get('cedulaEmisor').patchValue(this.envio.cedulaEmisor);
     this.actualizarEnvioForm.get('cedulaReceptor').patchValue(this.envio.cedulaReceptor);
     this.actualizarEnvioForm.get('fecha').patchValue(fechaFormateada);
     this.actualizarEnvioForm.get('tipo').patchValue(this.envio.tipo);
     this.actualizarEnvioForm.get('peso').patchValue(this.envio.peso);
     this.actualizarEnvioForm.get('valor').patchValue(this.envio.valor);
-
   }
 
   private construirFormulario(){
@@ -59,22 +52,17 @@ export class ActualizarEnvioComponent implements OnInit {
   }
 
   actualizar(){
-    const body = {...this.actualizarEnvioForm.value, fecha: `${formatDate(
-      this.actualizarEnvioForm.get('fecha')?.value,
-      'yyyy-MM-dd',
-      'es-CO',
-      'UTC'
-    )} 00:00:00` };
+    const body = {
+      ...this.actualizarEnvioForm.value,
+      fecha: this.envioService.formatearFecha(this.actualizarEnvioForm.get('fecha')?.value)
+    };
 
-    this.envioService.actualizar(body, this.envio.id).subscribe(res => {
-      console.log(res);
+    this.envioService.actualizar(body, this.envio.id).subscribe( () => {
       this.router.navigate(['/listar']);
     }, err => {
-      console.log(err);
       if (err.error.nombreExcepcion && err.error.mensaje){
         const titleSeparated = err.error.nombreExcepcion.replace(/([a-z](?=[A-Z]))/g, '$1 ');
         this.dialog.open(DialogComponent, {data: { title: titleSeparated, content: err.error.mensaje}});
-        console.log(err.error.mensaje);
       }
     });
   }
