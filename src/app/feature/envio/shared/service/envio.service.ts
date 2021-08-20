@@ -21,6 +21,10 @@ export class EnvioService {
     return this.http.doPut<Envio, number>(`${environment.endpoint}/envios/${id}`, envio);
   }
 
+  public eliminar(id: number) {
+    return this.http.doDelete<boolean>(`${environment.endpoint}/envios/${id}`);
+  }
+
   public formatearFecha(fecha: Date): string{
     return `${formatDate(
       fecha,

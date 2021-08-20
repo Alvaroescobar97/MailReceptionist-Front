@@ -13,6 +13,6 @@ export class ClienteService {
   }
 
   public guardar(cliente: Cliente) {
-    return this.http.doPost<Cliente,string>(`${environment.endpoint}/clientes`, cliente);
+    return this.http.doPost<Cliente, string>(`${environment.endpoint}/clientes`, cliente);
   }
 }
