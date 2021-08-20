@@ -1,5 +1,6 @@
+<h2 *ngIf="listaEnvios.length == 0">Lo sentimos, no hay elementos :(</h2>
 <div class="container">
-  <table mat-table [dataSource]="listaEnvios | async" class="mat-elevation-z8">
+  <table mat-table [dataSource]="listaEnvios" class="mat-elevation-z8" *ngIf="listaEnvios.length > 0">
 
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
