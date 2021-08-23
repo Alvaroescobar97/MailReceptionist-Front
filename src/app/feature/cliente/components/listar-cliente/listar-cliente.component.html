@@ -3,9 +3,10 @@
 <div class="options">
   <button id="linkCrearCliente" mat-raised-button color="primary" routerLink="../crear">Crear Cliente</button>
 </div>
+<h2 *ngIf="listaClientes.length == 0">Lo sentimos, no hay elementos :(</h2>
 <div class="container">
 
-  <table mat-table [dataSource]="listaClientes | async" class="mat-elevation-z8">
+  <table mat-table [dataSource]="listaClientes" class="mat-elevation-z8">
 
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
@@ -42,8 +43,8 @@
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef> Actions </th>
       <td mat-cell *matCellDef="let element" class="action-link">
-        <a mat-mini-fab color="primary" id="linkActualizarEnvio" [routerLink]="['../actualizar']" [queryParams]="element"><mat-icon>edit</mat-icon></a>
-        <a mat-mini-fab color="warn" id="linkEliminarEnvio" (click)="onDelete(element.cedula)"><mat-icon>delete_forever</mat-icon></a>
+        <a mat-mini-fab color="primary" id="linkActualizarCliente" (click)="clickEditar(element)"><mat-icon>edit</mat-icon></a>
+        <a mat-mini-fab color="warn" id="linkEliminarCliente" (click)="clickEliminar(element.cedula)"><mat-icon>delete_forever</mat-icon></a>
       </td>
     </ng-container>
 
