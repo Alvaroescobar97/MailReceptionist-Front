@@ -15,4 +15,13 @@ export class ClienteService {
   public guardar(cliente: Cliente) {
     return this.http.doPost<Cliente, string>(`${environment.endpoint}/clientes`, cliente);
   }
+
+  public actualizar(cliente: Cliente, cedula: string) {
+    return this.http.doPut<Cliente, string>(`${environment.endpoint}/clientes/${cedula}`, cliente);
+  }
+
+  public eliminar(cedula: string) {
+    return this.http.doDelete<boolean>(`${environment.endpoint}/clientes/${cedula}`);
+  }
+
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Envio } from '../../shared/model/envio';
 import { EnvioService } from '../../shared/service/envio.service';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 
 @Component({
@@ -13,7 +13,7 @@ export class ListarEnvioComponent implements OnInit {
 
   public listaEnvios: Envio[];
 
-  displayedColumns: string[] = ['id', 'emisor', 'receptor', 'fecha', 'tipo', 'peso', 'valor', 'action'];
+  displayedColumns: string[] = ['id', 'emisor', 'receptor', 'fecha', 'tipo', 'peso', 'valor', 'actions'];
   dataSource: any;
 
   constructor(protected envioService: EnvioService, private router: Router) {}
