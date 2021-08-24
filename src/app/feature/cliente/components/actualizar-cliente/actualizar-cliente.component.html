@@ -4,17 +4,10 @@
 
     <mat-card-header>
       <mat-card-title>Actualizar Cliente</mat-card-title>
+      <mat-card-subtitle>Cedula cliente: {{actualizarClienteForm.controls.cedula.value}}</mat-card-subtitle>
     </mat-card-header>
 
     <mat-card-content class="contenido">
-
-      <mat-form-field>
-        <mat-label>Cedula</mat-label>
-        <input matInput placeholder="Cedula" required formControlName="cedula" id="cedula" name="cedula">
-        <mat-error *ngIf="actualizarClienteForm.controls.cedula.errors?.required">
-          La cedula es <strong>requerida</strong>
-        </mat-error>
-      </mat-form-field>
 
       <mat-form-field>
         <mat-label>Nombre</mat-label>
